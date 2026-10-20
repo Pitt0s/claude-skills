@@ -1,0 +1,18 @@
+{
+  "name": "walberla-spdx-ai",
+  "version": "0.3.0",
+  "description": "Marks AI-generated code with the SPDX headers and snippet markers required by the waLBerla AI policy, and checks them after every write.",
+  "author": {
+    "name": "Michael Zikeli",
+    "email": "63597338+Pitt0s@users.noreply.github.com"
+  },
+  "license": "CC0-1.0",
+  "keywords": [
+    "spdx",
+    "license",
+    "ai-policy",
+    "walberla"
+  ],
+  "repository": "https://github.com/Pitt0s/claude-skills",
+  "homepage": "https://github.com/Pitt0s/claude-skills/tree/main/plugins/walberla-spdx-ai"
+}

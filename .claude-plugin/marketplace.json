@@ -1,0 +1,19 @@
+{
+  "name": "pitt0s",
+  "owner": {
+    "name": "Michael Zikeli",
+    "email": "63597338+Pitt0s@users.noreply.github.com"
+  },
+  "metadata": {
+    "description": "Claude Code skills and plugins by Michael Zikeli."
+  },
+  "plugins": [
+    {
+      "name": "walberla-spdx-ai",
+      "source": "./plugins/walberla-spdx-ai",
+      "description": "Marks AI-generated code with SPDX/REUSE headers and snippet markers (waLBerla AI policy).",
+      "version": "0.3.0",
+      "category": "compliance"
+    }
+  ]
+}

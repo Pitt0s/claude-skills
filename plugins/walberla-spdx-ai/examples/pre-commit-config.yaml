@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2026 Michael Zikeli <63597338+Pitt0s@users.noreply.github.com>
+# SPDX-FileContributor: Claude Code (claude-opus-5-5)
+#
+# SPDX-License-Identifier: CC0-1.0
+
+# SPDX-FileCreatedBy: Michael Zikeli
+# SPDX-FileCreatedUsing: Claude Code (claude-opus-5-5)
+
+# Merge into .pre-commit-config.yaml of the target repository.
+repos:
+  # Official REUSE hooks. "reuse-lint-file" only checks the staged files.
+  - repo: https://github.com/fsfe/reuse-tool
+    rev: v6.2.0
+    hooks:
+      - id: reuse-lint-file
+  # AI-specific checks from this plugin (snippets, markers, core paths).
+  - repo: local
+    hooks:
+      - id: spdx-ai-markers
+        name: SPDX AI markers
+        entry: python3 .claude/skills/spdx-ai-annotation/scripts/check_spdx.py --no-header-check
+        language: system
+        types: [text]

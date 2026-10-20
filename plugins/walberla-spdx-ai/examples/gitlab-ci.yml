@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: 2026 Michael Zikeli <63597338+Pitt0s@users.noreply.github.com>
+# SPDX-FileContributor: Claude Code (claude-opus-5-5)
+#
+# SPDX-License-Identifier: CC0-1.0
+
+# SPDX-FileCreatedBy: Michael Zikeli
+# SPDX-FileCreatedUsing: Claude Code (claude-opus-5-5)
+
+# Merge into .gitlab-ci.yml. Uses the official REUSE container image.
+spdx-ai-check:
+  stage: test
+  image: fsfe/reuse:latest
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  script:
+    - git fetch origin "$CI_MERGE_REQUEST_TARGET_BRANCH_NAME"
+    - git diff --name-only --diff-filter=AM "origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME"... > changed.txt
+    - test -s changed.txt || exit 0
+    - xargs python3 .claude/skills/spdx-ai-annotation/scripts/check_spdx.py < changed.txt

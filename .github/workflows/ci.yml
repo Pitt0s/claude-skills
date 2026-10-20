@@ -1,0 +1,48 @@
+# SPDX-FileCopyrightText: 2026 Michael Zikeli <63597338+Pitt0s@users.noreply.github.com>
+# SPDX-FileContributor: Claude Code (claude-opus-5-5)
+#
+# SPDX-License-Identifier: CC0-1.0
+
+# SPDX-FileCreatedBy: Michael Zikeli
+# SPDX-FileCreatedUsing: Claude Code (claude-opus-5-5)
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  reuse:
+    name: REUSE compliance
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: fsfe/reuse-action@v6
+
+  tests:
+    name: Plugin tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install reuse
+        run: pip install reuse
+      - name: Validate JSON manifests
+        run: |
+          for f in .claude-plugin/marketplace.json plugins/*/.claude-plugin/plugin.json plugins/*/hooks/hooks.json; do
+            python3 -m json.tool "$f" > /dev/null && echo "ok  $f"
+          done
+      - name: Run plugin tests
+        run: |
+          for t in plugins/*/tests/run_tests.sh; do
+            dir=$(dirname "$(dirname "$t")")
+            echo "== $dir"
+            (cd "$dir" && bash tests/run_tests.sh)
+          done

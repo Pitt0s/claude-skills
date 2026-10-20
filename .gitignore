@@ -1,0 +1,18 @@
+# SPDX-FileCopyrightText: 2026 Michael Zikeli <63597338+Pitt0s@users.noreply.github.com>
+# SPDX-FileContributor: Claude Code (claude-opus-5-5)
+#
+# SPDX-License-Identifier: CC0-1.0
+
+# SPDX-FileCreatedBy: Michael Zikeli
+# SPDX-FileCreatedUsing: Claude Code (claude-opus-5-5)
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+*.swp
+*~
+.idea/
+.vscode/
+*.zip

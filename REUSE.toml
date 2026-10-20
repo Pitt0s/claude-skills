@@ -1,0 +1,10 @@
+version = 1
+
+# Test fixtures contain deliberately broken or foreign SPDX headers.
+# Their in-file headers are test data, so this entry overrides them.
+[[annotations]]
+path = "plugins/walberla-spdx-ai/tests/fixtures/**"
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Michael Zikeli <63597338+Pitt0s@users.noreply.github.com>"
+SPDX-License-Identifier = "CC0-1.0"
+SPDX-FileContributor = "Claude Code (claude-opus-5-5)"
